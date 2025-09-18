@@ -7,13 +7,15 @@ main_outputdir="/Volumes/HNSD01/outdir/highdepth_WGS_TSS_customGenes/kmc3_output
 kmc_dump_output="/Volumes/HNSD01/outdir/highdepth_WGS_TSS_customGenes/kmc3_dump_count";
 
 # kmer_size=2;
-kmer_size=3;
+# kmer_size=3;
+kmer_size=4;
 # kmer_size=24;
+# kmer_size=12;
 
 cancer_type="Lung"
 tss_type="biomart";
 
-if [ "$kmer_size" -eq 2 ] || [ "$kmer_size" -eq 3 ]; then
+if [ "$kmer_size" -eq 2 ] || [ "$kmer_size" -eq 3 ] ; then
     cs_option="-cs100000"
 else
     cs_option=""
