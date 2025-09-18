@@ -24,7 +24,7 @@ for inputbam in ${all_input_bams};do \
         echo -e "working on region " $regionname;
         echo -e "coordinate of regions: " $region;
         mkdir -p ${outputdir}/${bedname}/by_region/${regionname}
-        samtools view -b -h ${inputbam} -L $region  > ${outputdir}/${bedname}/by_region/${regionname}/${filename%.bam*}.filtered.bam;
+        samtools view -b -h ${inputbam} $region  > ${outputdir}/${bedname}/by_region/${regionname}/${filename%.bam*}.filtered.bam;
         samtools index ${outputdir}/${bedname}/by_region/${regionname}/${filename%.bam*}.filtered.bam;
     done;
 done;
