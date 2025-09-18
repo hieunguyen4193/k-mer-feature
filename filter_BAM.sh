@@ -23,7 +23,7 @@ for inputbam in ${all_input_bams};do \
         regionname=$(sed -n ${i}p ${inputbed} | awk '{print $4}');
         echo -e "working on region " $regionname;
         echo -e "coordinate of regions: " $region;
-        mkdir -p ${outputdir}/${bedname}/${regionname}
+        mkdir -p ${outputdir}/${bedname}/by_region/${regionname}
         samtools view -b -h ${inputbam} -L $region  > ${outputdir}/${bedname}/by_region/${regionname}/${filename%.bam*}.filtered.bam;
         samtools index ${outputdir}/${bedname}/by_region/${regionname}/${filename%.bam*}.filtered.bam;
     done;
