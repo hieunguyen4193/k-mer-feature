@@ -1,7 +1,9 @@
 inputbed="./panels/panel_20250918.bed";
 bedname=$(echo $inputbed | xargs -n 1 basename);
 bedname=${bedname%.bed*};
-outputdir="/mnt/DATASM14/DATA_HIEUNGUYEN/outdir/k-mer-feature/$bedname";
+outputdir="/mnt/DATASM14/DATA_HIEUNGUYEN/outdir/k-mer-feature";
+mkdir -p ${outputdir}/${bedname};
+
 all_input_bams=$(cat full_metadata.csv | cut -d, -f4);
 
 for inputbam in ${all_input_bams};do \
@@ -20,6 +22,7 @@ for inputbam in ${all_input_bams};do \
         regionname=$(sed -n ${i}p ${inputbed} | awk '{print $4}');
         echo -e "working on region " $regionname;
         echo -e "coordinate of regions: " $region;
+        mkdir -p ${outputdir}/${bedname}/${regionname}
         samtools view -b -h -L $region ${inputbam} > ${outputdir}/${bedname}/${regionname}/${filename%.bam*}.filtered.bam;
         samtools index ${outputdir}/${bedname}/${regionname}/${filename%.bam*}.filtered.bam;
     done;
