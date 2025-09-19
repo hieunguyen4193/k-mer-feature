@@ -1,5 +1,3 @@
-samtools bam2fq SAMPLE.bam > SAMPLE.fastq
-
 export PATH=/Users/hieunguyen/samtools/bin:$PATH
 
 main_inputdir="/Volumes/HNSD01/raw_data/highdepth_WGS_TSS_customGenes"
